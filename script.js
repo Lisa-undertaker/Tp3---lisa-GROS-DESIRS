@@ -13,8 +13,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 champRecherche.addEventListener('input', () => {
   const texte = champRecherche.value.toLowerCase()
   const filtrés = articles.filter(article =>
-    article.title.toLowerCase().includes(texte) ||
-    article.body.toLowerCase().includes(texte)
+    article.title.toLowerCase().includes(texte) 
   )
   afficherArticles(filtrés)
 })
