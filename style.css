@@ -34,6 +34,7 @@ h1 {
 
 
 
+
 button {
 
 flex-wrap: wrap;
@@ -70,27 +71,37 @@ article {
 }
 
 
-@media (max-width: 768px) {
+#burger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-  body {
-    padding: 2rem;
+/* Par défaut (desktop) */
+#menu {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  #burger {
+    display: block;
   }
 
   #menu {
+    display: none;
     flex-direction: column;
     margin-top: 1em;
   }
 
-  .article {
-    padding: 2rem;
+  #menu.visible {
+    display: flex;
   }
-
- 
-}
 
 h1 {
 
-  font-size: 2em;
+font-size: 2em;
 
 }
-

@@ -1,24 +1,14 @@
 const postsContainer = document.getElementById('posts-container')
-console.log(postsContainer)
+const champRecherche = document.getElementById('champ-recherche')
+
+let articles = [] // <--- ajouter cette variable globale
 
 fetch('https://jsonplaceholder.typicode.com/posts')
   .then(response => response.json())
   .then(posts => {
-    posts.forEach(post => {
-      let article = document.createElement('article')
-      let title = document.createElement('h2')
-      let body = document.createElement('p')
-
-      title.textContent = post.title
-      body.textContent = post.body
-
-      article.appendChild(title)
-      article.appendChild(body)
-      postsContainer.appendChild(article)
-    })
+    articles = posts // <--- stocker ici
+    afficherArticles(articles) // afficher les articles dès le chargement
   })
-
-const champRecherche = document.getElementById('champ-recherche')
 
 champRecherche.addEventListener('input', () => {
   const texte = champRecherche.value.toLowerCase()
@@ -29,8 +19,26 @@ champRecherche.addEventListener('input', () => {
   afficherArticles(filtrés)
 })
 
+// Fonction pour afficher les articles (à ajouter)
+function afficherArticles(liste) {
+  postsContainer.innerHTML = '' // Vider l'affichage précédent
+  liste.forEach(post => {
+    let article = document.createElement('article')
+    let title = document.createElement('h2')
+    let body = document.createElement('p')
 
+    title.textContent = post.title
+    body.textContent = post.body
 
+    article.appendChild(title)
+    article.appendChild(body)
+    postsContainer.appendChild(article)
+  })
+}
 
+const burger = document.getElementById('burger')
+const menu = document.getElementById('menu')
 
-console.log('Hello World')
+burger.addEventListener('click', () => {
+  menu.classList.toggle('visible')
+})
